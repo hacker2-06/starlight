@@ -1,36 +1,227 @@
----
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
----
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sahabul Mondal - Biophysicist Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
+    }
+    header h1 {
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff00cc;
+    }
+    .btn {
+      margin: 1rem 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg, #ff0080, #7928ca);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      animation: slideUp 1s ease-out;
+    }
+    .about, .projects, .contact {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    .about-content {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-content img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+    .about-content p {
+      flex: 1;
+      min-width: 250px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 15px;
+      padding: 1rem;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+      border: none;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .btn {
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-content img {
+        margin-bottom: 1rem;
+      }
+    }
+    html.smooth-scroll {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("nav a").forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const href = this.getAttribute("href");
+          const section = document.querySelector(href);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+            section.style.animation = "slideUp 0.7s ease-out";
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Research</a>
+    <a href="#contact">Contact</a>
+  </nav>  <header>
+    <h1>Dr. Sahabul Mondal</h1>
+    <p>Biophysicist | Researcher | Science Communicator</p>
+    <button class="btn" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">Explore Research</button>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Get in Touch</button>
+  </header>  <section id="about" class="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="https://lh3.googleusercontent.com/a/ACg8ocKT1SNkMdyYmqDkFXtKe_2iih_c7aof3iIDN6QUsWOb8a-8OjTm=s720-c-no" alt="Sahabul Mondal Photo">
+      <p>I am a biophysicist driven by a fascination with the physical principles underlying biological systems. My research focuses on molecular simulations, protein folding, and cell mechanics. With a strong foundation in both physics and biology, I aim to bridge the gap between the two disciplines to uncover the mechanisms of life at a molecular scale.</p>
+    </div>
+  </section>  <section id="projects" class="projects">
+    <h2>Research Highlights</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9dvXJidFVX_UAFqUESiRm8nU79HsVOAWRgktS48ii0c97owCtaQy4S4M&s=10" alt="Protein Folding">
+        <h3>Protein Folding Dynamics</h3>
+        <p>Analyzing the folding pathways of proteins using molecular dynamics simulations.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGGG40pIfIxv6xYTxdn65MNkStn7ICPWKl_IkKDx5E0V5GbPM3_LA93sM&s=10" alt="Membrane Research">
+        <h3>Cell Membrane Mechanics</h3>
+        <p>Exploring the biomechanical properties of cellular membranes under stress.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc" alt="Simulation">
+        <h3>Computational Biophysics</h3>
+        <p>Building computational models to simulate complex biological systems.</p>
+      </div>
+    </div>
+  </section>  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Your Message" rows="5"></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>  <footer>
+    &copy; 2025 Dr. Sahabul Mondal. All rights reserved.
+  </footer>
+</body>
+</html>
